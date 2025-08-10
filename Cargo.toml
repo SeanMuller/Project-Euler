@@ -1,0 +1,13 @@
+[package]
+name = "project_euler"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "Solutions to Project Euler problems"
+license = "MIT"
+
+[dependencies]
+
+[[bin]]
+name = "project_euler"
+path = "src/main.rs"
