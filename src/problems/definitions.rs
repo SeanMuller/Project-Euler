@@ -1,4 +1,4 @@
-use crate::palindromes::find_largest_palindrome_reversed;
+use crate::solvers::palindromes::find_largest_palindrome_reversed;
 
 use super::registry::ProblemRegistry;
 use super::types::Problem;
@@ -6,6 +6,7 @@ use super::types::Problem;
 /// Initialize and return the problem registry with all problems
 pub fn get_problem_registry() -> ProblemRegistry {
     ProblemRegistry::new()
+        .register(create_problem_0())
         .register(create_problem_1())
         .register(create_problem_2())
         .register(create_problem_3())
@@ -16,11 +17,27 @@ pub fn get_problem_registry() -> ProblemRegistry {
         .register(create_problem_8())
         .register(create_problem_9())
         .register(create_problem_10())
+        .register(create_problem_11())
+        .register(create_problem_12())
+        .register(create_problem_14())
+}
+
+fn create_problem_0() -> Problem {
+    use crate::solvers::squares::sum_of_odd_squares;
+
+    Problem::new(
+        0,
+        "Sum of the first n odd squares",
+        "Sum of the first n odd squares",
+        10,
+        100,
+    )
+    .add_solution("formula", sum_of_odd_squares)
 }
 
 /// Problem 1: Multiples of 3 and 5
 fn create_problem_1() -> Problem {
-    use crate::multiples::sum_of_multiples_of_3_and_5;
+    use crate::solvers::multiples::sum_of_multiples_of_3_and_5;
 
     Problem::new(
         1,
@@ -34,7 +51,9 @@ fn create_problem_1() -> Problem {
 
 /// Problem 2: Even Fibonacci Numbers
 fn create_problem_2() -> Problem {
-    use crate::fibonacci::{sum_of_even_fibonacci_numbers, sum_of_even_fibonacci_numbers_simple};
+    use crate::solvers::fibonacci::{
+        sum_of_even_fibonacci_numbers, sum_of_even_fibonacci_numbers_simple,
+    };
 
     Problem::new(
         2,
@@ -49,7 +68,7 @@ fn create_problem_2() -> Problem {
 
 /// Problem 3: Largest Prime Factor
 fn create_problem_3() -> Problem {
-    use crate::primes::{largest_prime_factor, largest_prime_factor_optimized};
+    use crate::solvers::primes::{largest_prime_factor, largest_prime_factor_optimized};
 
     Problem::new(
         3,
@@ -64,7 +83,7 @@ fn create_problem_3() -> Problem {
 
 /// Problem 4: Largest Palindrome Product
 fn create_problem_4() -> Problem {
-    use crate::palindromes::find_largest_palindrome;
+    use crate::solvers::palindromes::find_largest_palindrome;
 
     Problem::new(
         4,
@@ -79,7 +98,7 @@ fn create_problem_4() -> Problem {
 
 /// Problem 5: Smallest Multiple
 fn create_problem_5() -> Problem {
-    use crate::primes::smallest_multiple;
+    use crate::solvers::primes::smallest_multiple;
 
     Problem::new(
         5,
@@ -93,7 +112,7 @@ fn create_problem_5() -> Problem {
 
 /// Problem 6: Sum Square Difference
 fn create_problem_6() -> Problem {
-    use crate::squares::difference;
+    use crate::solvers::squares::difference;
 
     Problem::new(
         6,
@@ -107,7 +126,7 @@ fn create_problem_6() -> Problem {
 
 /// Problem 7: 10001st Prime
 fn create_problem_7() -> Problem {
-    use crate::primes::nth_prime;
+    use crate::solvers::primes::nth_prime;
 
     Problem::new(
         7,
@@ -121,7 +140,7 @@ fn create_problem_7() -> Problem {
 
 /// Problem 8: Largest Product in a Series
 fn create_problem_8() -> Problem {
-    use crate::series::largest_product_in_series;
+    use crate::solvers::series::largest_product_in_series;
 
     Problem::new(
         8,
@@ -135,7 +154,7 @@ fn create_problem_8() -> Problem {
 
 /// Problem 9: Special Pythagorean Triplet
 fn create_problem_9() -> Problem {
-    use crate::squares::pythagorean_triplet_product_equal_to;
+    use crate::solvers::squares::pythagorean_triplet_product_equal_to;
 
     Problem::new(
         9,
@@ -149,7 +168,7 @@ fn create_problem_9() -> Problem {
 
 /// Problem 10: Summation of Primes
 fn create_problem_10() -> Problem {
-    use crate::primes::prime_sum;
+    use crate::solvers::primes::prime_sum;
 
     Problem::new(
         10,
@@ -159,4 +178,38 @@ fn create_problem_10() -> Problem {
         17, // 2 + 3 + 5 + 7 = 17
     )
     .add_solution("sieve", prime_sum)
+}
+
+fn create_problem_11() -> Problem {
+    use crate::solvers::grid::largest_product_in_grid_11;
+
+    Problem::new(
+        11,
+        "Largest Product in a Grid",
+        "Largest product of n adjacent digits in a given grid",
+        4,
+        5832,
+    )
+    .add_solution("brute_force", largest_product_in_grid_11)
+}
+
+fn create_problem_12() -> Problem {
+    use crate::solvers::triangle_numbers::highly_divisible_triangular_number;
+
+    Problem::new( 
+        12, 
+        "Highly Divisible Triangular Number", 
+        "The first triangle number to have over N divisors", 
+        5, 
+        28,
+    )
+    .add_solution("brute_force", highly_divisible_triangular_number)
+}
+
+
+fn create_problem_14() -> Problem{
+    use crate::solvers::collatz::longest_collatz;
+
+    Problem::new(14, "Longest Collatz Sequence", "Find the starting number less than N to produce the longest collatz sequence", 20, 18)
+    .add_solution("brute_force", longest_collatz)
 }

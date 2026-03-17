@@ -8,6 +8,14 @@ pub fn sum_of_squares(n: i64) -> i64 {
     return sum;
 }
 
+pub fn sum_of_odd_squares(n: i64) -> i64 {
+    let mut sum = 0;
+    for i in 1..=n/2 {
+        sum += (2 * i - 1).pow(2);
+    }
+    return sum;
+}
+
 pub fn square_of_sum(n: i64) -> i64 {
     let sum = (n * (n + 1)) / 2;
     return sum.pow(2);

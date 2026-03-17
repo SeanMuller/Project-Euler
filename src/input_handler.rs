@@ -1,6 +1,6 @@
 use crate::benchmark::{benchmark_all_problems, benchmark_problems, print_benchmark_summary};
 use crate::problems::{get_problem_registry, Problem};
-use std::env;
+use std::{env, fs};
 use std::process;
 
 #[derive(Debug, Clone)]
@@ -237,4 +237,10 @@ fn validate_input_value(input_value: i64) {
         eprintln!("Error: Please provide a positive input value");
         process::exit(1);
     }
+}
+
+pub fn read_grid_from_file(file_path: &str) -> Vec<Vec<i64>> {
+    let file = fs::read_to_string(file_path).expect("Failed to read file");
+    let lines = file.lines().map(|line| line.split_whitespace().map(|s| s.parse::<i64>().unwrap()).collect()).collect();
+    return lines;
 }

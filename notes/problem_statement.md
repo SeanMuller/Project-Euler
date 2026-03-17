@@ -1,4 +1,7 @@
-# Problems 1-10
+# Problems 0-10
+
+## Prooblem 0
+What is the sum of the first n odd squares
 
 ## Problem 1
 

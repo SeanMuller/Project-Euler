@@ -1,9 +1,9 @@
+use mod_exp::mod_exp;
+use rand::Rng;
 use std::cmp::max;
 /// Functions for prime number calculations and factorization
 /// Used primarily for Project Euler Problem 3
 use std::collections::HashMap;
-use mod_exp::mod_exp;
-use rand::Rng;
 
 /// Find all prime factors of a given number
 /// Returns a vector of prime factors in ascending order
@@ -123,15 +123,16 @@ pub fn is_prime(n: i64) -> bool {
     return true;
 }
 
+#[allow(dead_code)]
 fn miller_rabin(n: i64) -> bool {
     let s = 5;
     let k = 10;
     for _ in 0..k {
-        let a = rand::rng().random_range(2..n-1);
-        let  mut x = mod_exp(a, n-1, n);
+        let a = rand::rng().random_range(2..n - 1);
+        let mut x = mod_exp(a, n - 1, n);
         for _ in 0..s {
             let y = mod_exp(x, 2, n);
-            if y == 1 && x != 1 && x != n-1 {
+            if y == 1 && x != 1 && x != n - 1 {
                 return false;
             }
             x = y;
@@ -163,4 +164,4 @@ pub fn prime_sum(n: i64) -> i64 {
         }
     }
     return sum;
-}   
+}

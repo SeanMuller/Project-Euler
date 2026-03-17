@@ -1,12 +1,7 @@
 mod benchmark;
-mod fibonacci;
 mod input_handler;
-mod multiples;
-mod palindromes;
-mod primes;
 mod problems;
-mod series;
-mod squares;
+mod solvers;
 
 use input_handler::parse_arguments;
 

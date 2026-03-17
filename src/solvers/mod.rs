@@ -1,0 +1,10 @@
+pub mod fibonacci;
+pub mod grid;
+pub mod multiples;
+pub mod palindromes;
+pub mod primes;
+pub mod series;
+pub mod squares;
+pub mod triangle_numbers;
+pub mod factorisation;
+pub mod collatz;
